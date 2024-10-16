@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmalabfx.farmalabfx.controllers.cadastroController">
+    <children>
+        <Pane layoutX="428.0" layoutY="-5.0" prefHeight="509.0" prefWidth="374.0" style="-fx-background-color: #F5f5F5;">
+            <children>
+                <Button fx:id="btnLogin" layoutX="200.0" layoutY="420.0" mnemonicParsing="false" onAction="#logarUsuario" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #007BFF;" text="Entrar" textFill="WHITE">
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnCadastrar" layoutX="45.0" layoutY="370.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="33.0" prefWidth="296.0" style="-fx-background-color: #28A745;" text="Cadastrar" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </Button>
+                <Button fx:id="btnSair" layoutX="45.0" layoutY="420.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #DC3545;" text="Sair" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </Button>
+                <TextField fx:id="senhaCadastro" layoutX="52.0" layoutY="255.0" prefHeight="30.0" prefWidth="296.0" style="-fx-prompt-text-fill: #A9A9A9;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="emailCadastro" layoutX="52.0" layoutY="182.0" prefHeight="30.0" prefWidth="296.0" style="-fx-prompt-text-fill: #A9A9A9;">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </TextField>
+                <Label fx:id="emailLabel" layoutX="62.0" layoutY="166.0" text="E-mail" textFill="#000000b2">
+                    <font>
+                        <Font name="Arial" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="senhaLabel" layoutX="62.0" layoutY="239.0" text="Senha" textFill="#000000b2">
+                    <font>
+                        <Font name="Arial" size="14.0" />
+                    </font>
+                </Label>
+            <TextField fx:id="nomeCadastro" layoutX="52.0" layoutY="108.0" prefHeight="30.0" prefWidth="296.0" style="-fx-prompt-text-fill: #A9A9A9;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label fx:id="nomeLabel" layoutX="62.0" layoutY="92.0" text="Nome" textFill="#000000b2">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            </children>
+        </Pane>
+        <Pane layoutX="-2.0" layoutY="-4.0" prefHeight="509.0" prefWidth="429.0" style="-fx-background-color: #7E69A3;">
+            <children>
+
+                <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="168.0" layoutY="80.0">
+                    <image>
+                        <Image url="@img/pills.png" />
+                    </image>
+                </ImageView>
+
+                <Label fx:id="farmaLab" layoutX="159.0" layoutY="168.0" text="FarmaLab" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="25.0" />
+                    </font>
+                </Label>
+                <Line endX="79.0" layoutX="220.0" layoutY="198.0" startX="-83.0" stroke="WHITE" />
+                <Label layoutX="182.0" layoutY="211.0" text="Bem-vindo!" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            <Label layoutX="152.0" layoutY="231.0" text="Realize seu cadastro" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            </children>
+        </Pane>
+    </children>
+</Pane>
