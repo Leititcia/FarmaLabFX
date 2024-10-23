@@ -76,7 +76,7 @@ public class clienteController {
 
             String sql = "INSERT INTO clientes (nome, telefone, cpf) VALUES (?, ?, ?)";
 
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
                 pstmt.setString(1, nome);
@@ -135,7 +135,7 @@ public class clienteController {
 
             String sql = "UPDATE clientes SET nome = ?, telefone = ?, cpf = ? WHERE id = ?";
 
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
                 pstmt.setString(1, nome);
@@ -178,7 +178,7 @@ public class clienteController {
 
             String sql = "DELETE FROM clientes WHERE id = ?";
 
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
                 pstmt.setInt(1, cliente.getId()); // ID do cliente selecionado
@@ -222,7 +222,7 @@ public class clienteController {
 
         String sql = "SELECT * FROM clientes";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
 
@@ -257,6 +257,10 @@ public class clienteController {
     @FXML
     public void clientePage(ActionEvent event) {
         carregarTela(event, "com/farmalabfx/farmalabfx/CadastroUsuario.fxml", "Erro ao carregar a página");
+    }
+
+    public void fornecedorPage(ActionEvent event) {
+        carregarTela(event, "com/farmalabfx/farmalabfx/fornecedor.fxml", "Erro ao carregar a página");
     }
 
     @FXML

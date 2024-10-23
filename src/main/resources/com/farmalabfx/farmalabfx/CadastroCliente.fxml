@@ -24,7 +24,7 @@
                     </font>
                 </Label>
                 <Line endX="54.0" layoutX="143.0" layoutY="87.0" startX="-83.0" stroke="WHITE" />
-                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" onAction="#clientePage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Cliente" textFill="WHITE">
+                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" onAction="#clientePage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #000000;" text="Cliente" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -60,8 +60,8 @@
                 </Label>
             </children>
         </Pane>
-        <Button layoutX="719.0" layoutY="454.0" mnemonicParsing="false" onAction="#CadastrarCliente" text="Cadastrar" />
-        <Button layoutX="278.0" layoutY="454.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+        <Button layoutX="719.0" layoutY="454.0" mnemonicParsing="false" onAction="#CadastrarCliente" style="-fx-background-color: #7E69A3;" text="Cadastrar" textFill="WHITE" />
+        <Button layoutX="278.0" layoutY="454.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #7E69A3;" text="Voltar" textFill="WHITE" />
         <TextField fx:id="txtNome" layoutX="272.0" layoutY="142.0" prefHeight="25.0" prefWidth="495.0" />
         <TextField fx:id="txtTelefone" layoutX="272.0" layoutY="202.0" prefHeight="25.0" prefWidth="495.0" />
         <TextField fx:id="txtCpf" layoutX="273.0" layoutY="263.0" prefHeight="25.0" prefWidth="495.0" />

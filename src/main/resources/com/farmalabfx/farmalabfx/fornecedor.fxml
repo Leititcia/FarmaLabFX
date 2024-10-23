@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmalabfx.farmalabfx.controllers.clienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmalabfx.farmalabfx.controllers.fornecedorController">
     <children>
         <Pane layoutX="-2.0" layoutY="-3.0" prefHeight="506.0" prefWidth="258.0" style="-fx-background-color: #7E69A3;">
             <children>
@@ -76,6 +76,6 @@
         <Button layoutX="555.0" layoutY="366.0" onAction="#abrirTelaEditarCliente" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #7E69A3;" text="Editar" textFill="WHITE" />
 
         <Button layoutX="624.0" layoutY="366.0" onAction="#loadClientesFromDatabase" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Visualizar" textFill="WHITE" />
-      <Button layoutX="706.0" layoutY="366.0" onAction="#removerCliente" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Excluir" textFill="WHITE" />
+        <Button layoutX="706.0" layoutY="366.0" onAction="#removerCliente" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Excluir" textFill="WHITE" />
     </children>
 </Pane>
