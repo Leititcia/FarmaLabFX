@@ -1,20 +1,23 @@
 package com.farmalabfx.farmalabfx.controllers;
 
+import com.farmalabfx.farmalabfx.db.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class cadastroController {
+public class CadastroUsuarioController {
 
     @FXML
     private TextField nomeCadastro;
@@ -43,7 +46,6 @@ public class cadastroController {
     @FXML
     private Label nomeLabel;
 
-
     @FXML
     private void cadastrarUsuario(ActionEvent event) {
         String nome = nomeCadastro.getText();
@@ -55,17 +57,34 @@ public class cadastroController {
             return;
         }
 
-        // Lógica de cadastro (por exemplo, salvar no banco de dados)
-        // Aqui você pode adicionar a lógica para armazenar os dados do usuário
-
-        nomeCadastro.clear();
-        emailCadastro.clear();
-        senhaCadastro.clear();
-
-        mostrarAlerta("Sucesso", "Cadastro realizado com sucesso!");
-        logarUsuario(new ActionEvent());
-
+        // Lógica de cadastro no banco de dados
+        if (salvarUsuarioNoBanco(nome, email, senha)) {
+            mostrarAlerta("Sucesso", "Cadastro realizado com sucesso!");
+            logarUsuario(new ActionEvent());
+        } else {
+            mostrarAlerta("Erro", "Erro ao cadastrar o usuário.");
+        }
     }
+
+    private boolean salvarUsuarioNoBanco(String nome, String email, String senha) {
+        String sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, nome);
+            preparedStatement.setString(2, email);
+            preparedStatement.setString(3, senha);
+
+            int result = preparedStatement.executeUpdate();
+            return result > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     @FXML
     public void logarUsuario(ActionEvent event) {
@@ -88,7 +107,7 @@ public class cadastroController {
     }
 
     private void mostrarAlerta(String titulo, String mensagem) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(mensagem);

@@ -1,8 +1,5 @@
 package com.farmalabfx.farmalabfx.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Pessoa {
     protected int id;
     private String nome;

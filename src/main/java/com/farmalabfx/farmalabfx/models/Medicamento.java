@@ -1,7 +1,5 @@
 package com.farmalabfx.farmalabfx.models;
 
-import java.util.ArrayList;
-
 public class Medicamento {
     private int id;
     private String nome;
