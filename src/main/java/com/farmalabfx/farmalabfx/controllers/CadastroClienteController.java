@@ -205,4 +205,23 @@ public class CadastroClienteController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    // Método para carregar a tela de fornecedores
+    @FXML
+    public void fornecedorPage(ActionEvent event) {
+        carregaTela("/com/farmalabfx/farmalabfx/fornecedor.fxml");
+    }
+
+    // Método para carregar a tela de medicamentos
+    @FXML
+    public void medicamentosPage(ActionEvent event) {
+        carregaTela("/com/farmalabfx/farmalabfx/medicamentos.fxml");
+    }
+
+    // Método para carregar a tela de vendas
+    @FXML
+    public void vendasPage(ActionEvent event) {
+        carregaTela("/com/farmalabfx/farmalabfx/vendas.fxml");
+    }
+
 }
