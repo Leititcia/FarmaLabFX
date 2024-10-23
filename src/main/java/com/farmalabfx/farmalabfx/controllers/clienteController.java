@@ -256,11 +256,11 @@ public class clienteController {
 
     @FXML
     public void clientePage(ActionEvent event) {
-        carregarTela(event, "com/farmalabfx/farmalabfx/CadastroUsuario.fxml", "Erro ao carregar a página");
+        carregarTela(event, "/com/farmalabfx/farmalabfx/CadastroUsuario.fxml", "Erro ao carregar a página");
     }
 
     public void fornecedorPage(ActionEvent event) {
-        carregarTela(event, "com/farmalabfx/farmalabfx/fornecedor.fxml", "Erro ao carregar a página");
+        carregarTela(event, "/com/farmalabfx/farmalabfx/fornecedor.fxml", "Erro ao carregar a página");
     }
 
     @FXML
