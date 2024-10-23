@@ -1,5 +1,6 @@
 package com.farmalabfx.farmalabfx.controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,22 +14,29 @@ import java.io.IOException;
 
 public class medicamentoController {
 
-    // Método para cadastrar um medicamento
     @FXML
-    public void TelaCadastrarMedicamento() {
-        // Lógica para abrir a tela de cadastro
+    public void clientePage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/cliente.fxml", "Erro ao carregar a página");
     }
 
-    // Método para editar um medicamento
     @FXML
-    public void TelaEditarMedicamento() {
-        // Lógica para abrir a tela de edição
+    public void medicamentosPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/medicamento.fxml", "Erro ao carregar a página");
     }
 
-    // Método para excluir um medicamento
     @FXML
-    public void ExcluirMedicamento() {
-        // Lógica para excluir o medicamento selecionado
+    public void fornecedorPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/fornecedor.fxml", "Erro ao carregar a página");
+    }
+
+    @FXML
+    public void vendasPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/vendas.fxml", "Erro ao carregar a página");
+    }
+
+    @FXML
+    public void sairDoSistema(ActionEvent event) {
+        Platform.exit();
     }
 
 

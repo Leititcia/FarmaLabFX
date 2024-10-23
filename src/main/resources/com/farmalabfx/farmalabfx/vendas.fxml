@@ -25,22 +25,22 @@
                     </font>
                 </Label>
                 <Line endX="54.0" layoutX="143.0" layoutY="87.0" startX="-83.0" stroke="WHITE" />
-                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Cliente" textFill="WHITE">
+                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" onAction="#clientePage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Cliente" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnFornecedor" layoutX="57.0" layoutY="215.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Fornecedor" textFill="WHITE">
+                <Button fx:id="btnFornecedor" layoutX="57.0" layoutY="215.0" mnemonicParsing="false" onAction="#fornecedorPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Fornecedor" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="57.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
+                <Button layoutX="57.0" layoutY="265.0" mnemonicParsing="false" onAction="#medicamentosPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="57.0" layoutY="315.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #000000;" text="Vendas" textFill="WHITE">
+                <Button layoutX="57.0" layoutY="315.0" mnemonicParsing="false" onAction="#vendasPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #000000;" text="Vendas" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -71,6 +71,6 @@
         </TableView>
 
         <Button layoutX="583.0" layoutY="366.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: #7E69A3;" text="Realizar Venda" textFill="WHITE" />
-        <Button fx:id="excluirMedicamento" layoutX="706.0" layoutY="366.0" onAction="#ExcluirMedicamento" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Excluir" textFill="WHITE" />
+        <Button fx:id="excluirMedicamento" layoutX="706.0" layoutY="366.0" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Excluir" textFill="WHITE" />
     </children>
 </Pane>

@@ -109,18 +109,27 @@ public class clienteController {
 
     @FXML
     public void clientePage(ActionEvent event) {
-        carregarTela(event, "com/farmalabfx/farmalabfx/CadastroUsuario.fxml", "Erro ao carregar a página");
+        carregarTela(event, "/com/farmalabfx/farmalabfx/cliente.fxml", "Erro ao carregar a página");
     }
 
     @FXML
-    public void medicamentoPage(ActionEvent event) {
+    public void medicamentosPage(ActionEvent event) {
         carregarTela(event, "/com/farmalabfx/farmalabfx/medicamento.fxml", "Erro ao carregar a página");
     }
 
     @FXML
+    public void fornecedorPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/fornecedor.fxml", "Erro ao carregar a página");
+    }
+
+    @FXML
+    public void vendasPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/vendas.fxml", "Erro ao carregar a página");
+    }
+
+    @FXML
     public void sairDoSistema(ActionEvent event) {
-        Stage stage = (Stage) btnsairDoSistema.getScene().getWindow();
-        stage.close(); // Fecha a aplicação
+        Platform.exit();
     }
 
 

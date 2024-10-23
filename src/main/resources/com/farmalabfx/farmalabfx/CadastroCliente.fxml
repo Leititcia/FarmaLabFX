@@ -60,15 +60,15 @@
                 </Label>
             </children>
         </Pane>
-        <Button layoutX="719.0" layoutY="454.0" mnemonicParsing="false" onAction="#salvarCliente" text="Atualizar" />
-        <Button layoutX="278.0" layoutY="454.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+        <Button layoutX="719.0" layoutY="454.0" mnemonicParsing="false" onAction="#salvarCliente" style="-fx-background-color: #7E69A3;" text="Atualizar" textFill="WHITE" />
+        <Button layoutX="278.0" layoutY="454.0" mnemonicParsing="false" onAction="#voltar" style="-fx-background-color: #7E69A3;" text="Voltar" textFill="WHITE" />
         <TextField fx:id="txtNome" layoutX="272.0" layoutY="142.0" prefHeight="25.0" prefWidth="495.0" />
         <TextField fx:id="txtTelefone" layoutX="272.0" layoutY="202.0" prefHeight="25.0" prefWidth="495.0" />
         <TextField fx:id="txtCpf" layoutX="273.0" layoutY="263.0" prefHeight="25.0" prefWidth="495.0" />
       <Label layoutX="273.0" layoutY="118.0" text="Nome" />
       <Label layoutX="273.0" layoutY="181.0" text="Telefone" />
       <Label layoutX="273.0" layoutY="242.0" text="Cpf" />
-      <Button layoutX="627.0" layoutY="454.0" mnemonicParsing="false" onAction="#CadastrarCliente" text="Cadastrar" />
+      <Button layoutX="627.0" layoutY="454.0" mnemonicParsing="false" onAction="#CadastrarCliente" style="-fx-background-color: #7E69A3;" text="Cadastrar" textFill="WHITE" />
 
     </children>
 </Pane>

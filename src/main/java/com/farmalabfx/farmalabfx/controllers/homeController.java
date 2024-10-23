@@ -69,7 +69,7 @@ public class homeController {
     // Método para carregar a tela de medicamentos
     @FXML
     public void medicamentosPage(ActionEvent event) {
-        carregaTela("/com/farmalabfx/farmalabfx/medicamentos.fxml");
+        carregaTela("/com/farmalabfx/farmalabfx/medicamento.fxml");
     }
 
     // Método para carregar a tela de vendas

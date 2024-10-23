@@ -25,22 +25,22 @@
                     </font>
                 </Label>
                 <Line endX="54.0" layoutX="143.0" layoutY="87.0" startX="-83.0" stroke="WHITE" />
-                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" onAction="#fornecedorPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Cliente" textFill="WHITE">
+                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" onAction="#clientePage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Cliente" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnFornecedor" layoutX="57.0" layoutY="215.0" mnemonicParsing="false" onAction="#fornecedorPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Fornecedor" textFill="WHITE">
+                <Button fx:id="btnFornecedor" layoutX="57.0" layoutY="215.0" mnemonicParsing="false" onAction="#fornecedorPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #000000;" text="Fornecedor" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="57.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
+                <Button layoutX="57.0" layoutY="265.0" mnemonicParsing="false" onAction="#medicamentosPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="57.0" layoutY="315.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Vendas" textFill="WHITE">
+                <Button layoutX="57.0" layoutY="315.0" mnemonicParsing="false" onAction="#vendasPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Vendas" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -71,12 +71,12 @@
         </TableView>
 
         <!-- Botões de Ações com Textos Menores -->
-        <Button layoutX="470.0" layoutY="366.0" onAction="#TelacadastrarFornecedor" prefHeight="30.0" prefWidth="70.0" text="Cadastrar" />
+        <Button layoutX="470.0" layoutY="366.0" onAction="#TelacadastrarFornecedor" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #7E69A3;" text="Cadastrar" textFill="WHITE" />
 
-        <Button layoutX="555.0" layoutY="366.0" onAction="#abrirTelaEditarFornecedor" prefHeight="30.0" prefWidth="54.0" text="Editar" />
+        <Button layoutX="555.0" layoutY="366.0" onAction="#abrirTelaEditarFornecedor" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #7E69A3;" text="Editar" textFill="WHITE" />
 
-        <Button layoutX="624.0" layoutY="366.0" onAction="#loadFornecedoresFromDatabase" prefHeight="30.0" prefWidth="68.0" text="Visualizar" />
+        <Button layoutX="624.0" layoutY="366.0" onAction="#loadFornecedoresFromDatabase" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Visualizar" textFill="WHITE" />
 
-        <Button layoutX="706.0" layoutY="366.0" onAction="#removerFornecedor" prefHeight="30.0" prefWidth="68.0" text="Excluir" />
+        <Button layoutX="706.0" layoutY="366.0" onAction="#removerFornecedor" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Excluir" textFill="WHITE" />
     </children>
 </Pane>
