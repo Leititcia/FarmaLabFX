@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmalabfx.farmalabfx.controllers.CadastroFornecedorController">
+    <children>
+        <Pane layoutX="-2.0" layoutY="-3.0" prefHeight="506.0" prefWidth="258.0" style="-fx-background-color: #7E69A3;">
+            <children>
+                <ImageView fitHeight="30.0" fitWidth="27.0" layoutX="162.0" layoutY="55.0">
+                    <image>
+                        <Image url="@img/pills.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="farmaLab" layoutX="71.0" layoutY="59.0" text="FarmaLab" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Line endX="54.0" layoutX="143.0" layoutY="87.0" startX="-83.0" stroke="WHITE" />
+                <Button layoutX="57.0" layoutY="165.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Cliente" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnFornecedor" layoutX="57.0" layoutY="215.0" mnemonicParsing="false" onAction="#fornecedorPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Fornecedor" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button layoutX="57.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button layoutX="57.0" layoutY="315.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Vendas" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button layoutX="57.0" layoutY="428.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #ffffff;" text="Sair">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+        <Pane layoutX="256.0" layoutY="-3.0" prefHeight="103.0" prefWidth="546.0" style="-fx-background-color: #412570;">
+            <children>
+                <Label layoutX="20.0" layoutY="33.0" text="Fornecedor" textFill="WHITE">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Button layoutX="719.0" layoutY="454.0" mnemonicParsing="false" onAction="#salvarFornecedor" text="Atualizar" />
+        <Button layoutX="278.0" layoutY="454.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+        <TextField fx:id="txtNome" layoutX="272.0" layoutY="142.0" prefHeight="25.0" prefWidth="495.0" />
+        <TextField fx:id="txtTelefone" layoutX="272.0" layoutY="202.0" prefHeight="25.0" prefWidth="495.0" />
+        <TextField fx:id="txtCnpj" layoutX="273.0" layoutY="263.0" prefHeight="25.0" prefWidth="495.0" />
+        <Label layoutX="273.0" layoutY="118.0" text="Nome da Empresa" />
+        <Label layoutX="273.0" layoutY="181.0" text="Telefone da Empresa" />
+        <Label layoutX="273.0" layoutY="242.0" text="CNPJ" />
+        <Button layoutX="627.0" layoutY="454.0" mnemonicParsing="false" onAction="#CadastrarFornecedor" text="Cadastrar" />
+
+    </children>
+</Pane>
