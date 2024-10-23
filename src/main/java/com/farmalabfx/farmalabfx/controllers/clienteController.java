@@ -261,8 +261,7 @@ public class clienteController {
 
     @FXML
     public void sairDoSistema(ActionEvent event) {
-        Stage stage = (Stage) btnsairDoSistema.getScene().getWindow();
-        stage.close(); // Fecha a aplicação
+        Platform.exit();
     }
 
     @FXML

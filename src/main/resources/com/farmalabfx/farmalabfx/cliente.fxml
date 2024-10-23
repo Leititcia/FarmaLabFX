@@ -71,11 +71,11 @@
         </TableView>
 
         <!-- Botões de Ações com Textos Menores -->
-        <Button layoutX="470.0" layoutY="366.0" onAction="#TelacadastrarCliente" prefHeight="30.0" prefWidth="70.0" text="Cadastrar" />
+        <Button layoutX="470.0" layoutY="366.0" onAction="#TelacadastrarCliente" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #7E69A3;" text="Cadastrar" textFill="WHITE" />
 
-        <Button layoutX="555.0" layoutY="366.0" onAction="#abrirTelaEditarCliente" prefHeight="30.0" prefWidth="54.0" text="Editar" />
+        <Button layoutX="555.0" layoutY="366.0" onAction="#abrirTelaEditarCliente" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #7E69A3;" text="Editar" textFill="WHITE" />
 
-        <Button layoutX="624.0" layoutY="366.0" onAction="#loadClientesFromDatabase" prefHeight="30.0" prefWidth="68.0" text="Visualizar" />
-      <Button layoutX="706.0" layoutY="366.0" onAction="#removerCliente" prefHeight="30.0" prefWidth="68.0" text="Excluir" />
+        <Button layoutX="624.0" layoutY="366.0" onAction="#loadClientesFromDatabase" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Visualizar" textFill="WHITE" />
+      <Button layoutX="706.0" layoutY="366.0" onAction="#removerCliente" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Excluir" textFill="WHITE" />
     </children>
 </Pane>

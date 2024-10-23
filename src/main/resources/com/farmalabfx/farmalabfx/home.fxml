@@ -43,7 +43,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="62.0" layoutY="428.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #ffffff;" text="Sair">
+            <Button layoutX="57.0" layoutY="428.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #ffffff;" text="Sair">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
