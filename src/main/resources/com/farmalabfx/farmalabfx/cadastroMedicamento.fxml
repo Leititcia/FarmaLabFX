@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmalabfx.farmalabfx.controllers.CadastroClienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmalabfx.farmalabfx.controllers.cadastroMedicamentoController">
     <children>
         <Pane layoutX="-2.0" layoutY="-3.0" prefHeight="506.0" prefWidth="258.0" style="-fx-background-color: #7E69A3;">
             <children>
@@ -25,7 +26,7 @@
                     </font>
                 </Label>
                 <Line endX="54.0" layoutX="143.0" layoutY="87.0" startX="-83.0" stroke="WHITE" />
-                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" onAction="#clientePage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #000000;" text="Cliente" textFill="WHITE">
+                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" onAction="#clientePage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Cliente" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -41,7 +42,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-                <Button layoutX="57.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
+                <Button layoutX="57.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #000000;" text="Medicamentos" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -69,14 +70,14 @@
         </Pane>
         <Pane layoutX="256.0" layoutY="-3.0" prefHeight="103.0" prefWidth="546.0" style="-fx-background-color: #412570;">
             <children>
-                <Label layoutX="20.0" layoutY="33.0" text="Cliente" textFill="WHITE">
+                <Label layoutX="20.0" layoutY="33.0" text="Cadastrar Medicamento" textFill="WHITE">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
             </children>
         </Pane>
-        <Button fx:id="btnAtualizar" layoutX="719.0" layoutY="454.0" mnemonicParsing="false" onAction="#salvarCliente" style="-fx-background-color: #7E69A3;" text="Atualizar" textFill="WHITE">
+        <Button fx:id="btnCadastrar" layoutX="719.0" layoutY="454.0" mnemonicParsing="false" onAction="#CadastrarMedicamento" style="-fx-background-color: #7E69A3;" text="Cadastrar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -85,15 +86,13 @@
             <Cursor fx:constant="HAND" />
          </cursor></Button>
         <TextField fx:id="txtNome" layoutX="272.0" layoutY="142.0" prefHeight="25.0" prefWidth="495.0" />
-        <TextField fx:id="txtTelefone" layoutX="272.0" layoutY="202.0" prefHeight="25.0" prefWidth="495.0" />
-        <TextField fx:id="txtCpf" layoutX="273.0" layoutY="263.0" prefHeight="25.0" prefWidth="495.0" />
-      <Label layoutX="273.0" layoutY="118.0" text="Nome" />
-      <Label layoutX="273.0" layoutY="181.0" text="Telefone" />
-      <Label layoutX="273.0" layoutY="242.0" text="Cpf" />
-      <Button fx:id="btnCadastrar" layoutX="627.0" layoutY="454.0" mnemonicParsing="false" onAction="#CadastrarCliente" style="-fx-background-color: #7E69A3;" text="Cadastrar" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
+        <TextField fx:id="txtPreco" layoutX="272.0" layoutY="202.0" prefHeight="25.0" prefWidth="495.0" />
+        <TextField fx:id="txtQuantidade" layoutX="273.0" layoutY="263.0" prefHeight="25.0" prefWidth="495.0" />
+        <Label layoutX="273.0" layoutY="118.0" text="Medicamento" />
+        <Label layoutX="273.0" layoutY="181.0" text="Preço" />
+        <Label layoutX="273.0" layoutY="242.0" text="Quantidade" />
+      <Label layoutX="273.0" layoutY="305.0" text="Fornecedor" />
+      <ComboBox fx:id="cbFornecedor" layoutX="271.0" layoutY="326.0" prefWidth="150.0" />
 
     </children>
 </Pane>

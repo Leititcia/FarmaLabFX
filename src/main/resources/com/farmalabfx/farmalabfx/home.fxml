@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -27,26 +28,41 @@
                <font>
                   <Font size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="btnFornecedor" layoutX="57.0" layoutY="215.0" mnemonicParsing="false" onAction="#fornecedorPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Fornecedor" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="btnMedicamentos" layoutX="57.0" layoutY="265.0" mnemonicParsing="false" onAction="#medicamentosPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="btnVendas" layoutX="57.0" layoutY="315.0" mnemonicParsing="false" onAction="#vendasPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Vendas" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button layoutX="62.0" layoutY="428.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #ffffff;" text="Sair">
+            <Button layoutX="57.0" layoutY="428.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #ffffff;" text="Sair">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </Pane>
@@ -81,11 +97,7 @@
          <children>
       
                   <!-- Labels para mostrar os contadores -->
-            <Label fx:id="lblClientes" layoutX="4.0" layoutY="10.0" text="Clientes: 0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
+            <Label fx:id="lblClientes" layoutX="4.0" layoutY="10.0" text="Clientes: 0" />
          </children>
       </Pane>
       <Pane layoutX="433.0" layoutY="114.0" prefHeight="62.0" prefWidth="77.0" style="-fx-background-color: #412570;">

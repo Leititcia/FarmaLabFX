@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmalabfx.farmalabfx.controllers.EditarClienteController">
     <children>
@@ -25,7 +24,7 @@
                     </font>
                 </Label>
                 <Line endX="54.0" layoutX="143.0" layoutY="87.0" startX="-83.0" stroke="WHITE" />
-                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" onAction="#clientePage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Cliente" textFill="WHITE">
+                <Button fx:id="btnCliente" layoutX="57.0" layoutY="165.0" mnemonicParsing="false" onAction="#clientePage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #000000;" text="Cliente" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -61,11 +60,11 @@
                 </Label>
             </children>
         </Pane>
-        <Button layoutX="719.0" layoutY="454.0" mnemonicParsing="false" onAction="#salvarCliente" text="Atualizar" />
-        <Button layoutX="278.0" layoutY="454.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+        <Button layoutX="719.0" layoutY="454.0" mnemonicParsing="false" onAction="#salvarCliente" style="-fx-background-color: #7E69A3;" text="Atualizar" textFill="WHITE" />
+        <Button layoutX="278.0" layoutY="454.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="53.0" style="-fx-background-color: #7E69A3;" text="Voltar" textFill="WHITE" />
         <TextField fx:id="txtNome" layoutX="272.0" layoutY="142.0" prefHeight="25.0" prefWidth="495.0" promptText="Nome" />
         <TextField fx:id="txtTelefone" layoutX="272.0" layoutY="202.0" prefHeight="25.0" prefWidth="495.0" promptText="Telefone" />
-        <TextField fx:id="txtCpf" layoutX="273.0" layoutY="263.0" prefHeight="25.0" prefWidth="495.0" promptText="CPF" />
+        <TextField fx:id="txtCpf" layoutX="272.0" layoutY="263.0" prefHeight="25.0" prefWidth="495.0" promptText="CPF" />
         <Label layoutX="273.0" layoutY="118.0" text="Nome" />
         <Label layoutX="273.0" layoutY="181.0" text="Telefone" />
         <Label layoutX="273.0" layoutY="242.0" text="CPF" />

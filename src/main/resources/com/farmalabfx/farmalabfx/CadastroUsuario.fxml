@@ -14,28 +14,28 @@
     <children>
         <Pane layoutX="428.0" layoutY="-5.0" prefHeight="509.0" prefWidth="374.0" style="-fx-background-color: #F5f5F5;">
             <children>
-                <Button fx:id="btnLogin" layoutX="200.0" layoutY="420.0" mnemonicParsing="false" onAction="#logarUsuario" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #007BFF;" text="Entrar" textFill="WHITE">
+                <Button fx:id="btnLogin" layoutX="200.0" layoutY="420.0" mnemonicParsing="false" onAction="#logarUsuario" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #79787A;" text="Entrar" textFill="WHITE">
                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnCadastrar" layoutX="45.0" layoutY="370.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="33.0" prefWidth="296.0" style="-fx-background-color: #28A745;" text="Cadastrar" textFill="WHITE">
+                <Button fx:id="btnCadastrar" layoutX="45.0" layoutY="370.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="33.0" prefWidth="296.0" style="-fx-background-color: #7E69A3;" text="Cadastrar" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="btnSair" layoutX="45.0" layoutY="420.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #DC3545;" text="Sair" textFill="WHITE">
+                <Button fx:id="btnSair" layoutX="45.0" layoutY="420.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #000000;" text="Sair" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
                 <TextField fx:id="senhaCadastro" layoutX="52.0" layoutY="255.0" prefHeight="30.0" prefWidth="296.0" style="-fx-prompt-text-fill: #A9A9A9;">
@@ -73,24 +73,24 @@
         <Pane layoutX="-2.0" layoutY="-4.0" prefHeight="509.0" prefWidth="429.0" style="-fx-background-color: #7E69A3;">
             <children>
 
-                <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="168.0" layoutY="80.0">
+                <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="164.0" layoutY="169.0">
                     <image>
                         <Image url="@img/pills.png" />
                     </image>
                 </ImageView>
 
-                <Label fx:id="farmaLab" layoutX="159.0" layoutY="168.0" text="FarmaLab" textFill="WHITE">
+                <Label fx:id="farmaLab" layoutX="155.0" layoutY="257.0" text="FarmaLab" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="25.0" />
                     </font>
                 </Label>
-                <Line endX="79.0" layoutX="220.0" layoutY="198.0" startX="-83.0" stroke="WHITE" />
-                <Label layoutX="182.0" layoutY="211.0" text="Bem-vindo!" textFill="WHITE">
+                <Line endX="79.0" layoutX="216.0" layoutY="287.0" startX="-83.0" stroke="WHITE" />
+                <Label layoutX="178.0" layoutY="296.0" text="Bem-vindo!" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <Label layoutX="152.0" layoutY="231.0" text="Realize seu cadastro" textFill="WHITE">
+            <Label layoutX="148.0" layoutY="317.0" text="Realize seu cadastro" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

@@ -1,6 +1,7 @@
 package com.farmalabfx.farmalabfx.controllers;
 
 import com.farmalabfx.farmalabfx.models.Fornecedor;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -74,44 +75,35 @@ public class FornecedorController {
     private void loadFornecedoresFromDatabase() {
         fornecedorList.clear(); // Limpa a lista antes de adicionar novos fornecedores
 
-        String sql = "SELECT * FROM fornecedores";
+        fornecedorList = FXCollections.observableArrayList(Fornecedor.all());
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+        // Adiciona a lista de fornecedores na TableView
+        tableViewFornecedores.setItems(fornecedorList);
+    }
 
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String nome = rs.getString("nome");
-                String telefone = rs.getString("telefone");
-                String cnpj = rs.getString("cnpj");
+    @FXML
+    public void clientePage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/cliente.fxml", "Erro ao carregar a página");
+    }
 
-                // Adiciona o fornecedor à lista
-                fornecedorList.add(new Fornecedor(id, nome, telefone, cnpj));
-            }
-
-            // Adiciona a lista de fornecedores na TableView
-            tableViewFornecedores.setItems(fornecedorList);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro ao carregar fornecedores");
-            alert.setHeaderText("Erro de Conexão");
-            alert.setContentText("Erro: " + e.getMessage());
-            alert.showAndWait();
-        }
+    @FXML
+    public void medicamentosPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/medicamento.fxml", "Erro ao carregar a página");
     }
 
     @FXML
     public void fornecedorPage(ActionEvent event) {
-        carregarTela(event, "com/farmalabfx/farmalabfx/CadastroUsuario.fxml", "Erro ao carregar a página");
+        carregarTela(event, "/com/farmalabfx/farmalabfx/fornecedor.fxml", "Erro ao carregar a página");
+    }
+
+    @FXML
+    public void vendasPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/vendas.fxml", "Erro ao carregar a página");
     }
 
     @FXML
     public void sairDoSistema(ActionEvent event) {
-        Stage stage = (Stage) btnsairDoSistema.getScene().getWindow();
-        stage.close(); // Fecha a aplicação
+        Platform.exit();
     }
 
     @FXML

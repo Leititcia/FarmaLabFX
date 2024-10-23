@@ -1,5 +1,6 @@
 package com.farmalabfx.farmalabfx.controllers;
 
+import com.farmalabfx.farmalabfx.db.DBConnection;
 import com.farmalabfx.farmalabfx.models.Cliente;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -28,6 +29,9 @@ public class clienteController {
 
     @FXML
     private Button btnCadastrar;
+
+    @FXML
+    private Button btnFornecedor;
 
     @FXML
     private Button btnsairDoSistema;
@@ -75,44 +79,36 @@ public class clienteController {
     private void loadClientesFromDatabase() {
         clienteList.clear(); // Limpa a lista antes de adicionar novos clientes
 
-        String sql = "SELECT * FROM clientes";
+        clienteList = FXCollections.observableArrayList(Cliente.all());
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+        // Adiciona a lista de clientes na TableView
+        tableViewClientes.setItems(clienteList);
 
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String nome = rs.getString("nome");
-                String telefone = rs.getString("telefone");
-                String cpf = rs.getString("cpf");
-
-                // Adiciona o cliente à lista
-                clienteList.add(new Cliente(id, nome, telefone, cpf));
-            }
-
-            // Adiciona a lista de clientes na TableView
-            tableViewClientes.setItems(clienteList);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro ao carregar clientes");
-            alert.setHeaderText("Erro de Conexão");
-            alert.setContentText("Erro: " + e.getMessage());
-            alert.showAndWait();
-        }
     }
 
     @FXML
     public void clientePage(ActionEvent event) {
-        carregarTela(event, "com/farmalabfx/farmalabfx/CadastroUsuario.fxml", "Erro ao carregar a página");
+        carregarTela(event, "/com/farmalabfx/farmalabfx/cliente.fxml", "Erro ao carregar a página");
+    }
+
+    @FXML
+    public void medicamentosPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/medicamento.fxml", "Erro ao carregar a página");
+    }
+
+    @FXML
+    public void fornecedorPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/fornecedor.fxml", "Erro ao carregar a página");
+    }
+
+    @FXML
+    public void vendasPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/vendas.fxml", "Erro ao carregar a página");
     }
 
     @FXML
     public void sairDoSistema(ActionEvent event) {
-        Stage stage = (Stage) btnsairDoSistema.getScene().getWindow();
-        stage.close(); // Fecha a aplicação
+        Platform.exit();
     }
 
 
@@ -160,7 +156,7 @@ public class clienteController {
             if (response == ButtonType.OK) {
                 // Remover o cliente do banco de dados
                 String sql = "DELETE FROM clientes WHERE id = ?";
-                try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+                try (Connection conn = DBConnection.getConnection();
                      PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
                     pstmt.setInt(1, cliente.getId());

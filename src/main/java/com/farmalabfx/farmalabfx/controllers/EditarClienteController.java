@@ -58,7 +58,7 @@ public class EditarClienteController {
 
         String sql = "UPDATE clientes SET nome = ?, telefone = ?, cpf = ? WHERE id = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, nome);
