@@ -30,12 +30,12 @@
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnFornecedor" layoutX="57.0" layoutY="215.0" mnemonicParsing="false" onAction="#fornecedorPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Fornecedor" textFill="WHITE">
+                <Button fx:id="btnFornecedor" layoutX="57.0" layoutY="215.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Fornecedor" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="57.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
+                <Button fx:id="btnMedicamento" layoutX="57.0" layoutY="265.0" mnemonicParsing="false" onAction="#medicamentoPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>

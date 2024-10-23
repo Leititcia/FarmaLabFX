@@ -13,8 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -32,176 +30,37 @@ public class clienteController {
     private Button btnCadastrar;
 
     @FXML
+    private Button btnFornecedor;
+
+    @FXML
     private Button btnsairDoSistema;
 
     @FXML
     private TextField txtNome;
 
     @FXML
+    private TextField txtTelefone;
+
+    @FXML
+    private TextField txtCpf;
+
+    @FXML
     private TableView<Cliente> tableViewClientes;
+
     @FXML
     private TableColumn<Cliente, Integer> colId;
+
     @FXML
     private TableColumn<Cliente, String> colNome;
+
     @FXML
     private TableColumn<Cliente, String> colTelefone;
+
     @FXML
     private TableColumn<Cliente, String> colCpf;
-    @FXML
-    private TableColumn<Cliente, Void> colunaAcoes;
 
     private ObservableList<Cliente> clienteList = FXCollections.observableArrayList();
 
-        // Adicione os novos campos de texto para o cadastro
-        @FXML
-        private TextField txtTelefone;
-
-        @FXML
-        private TextField txtCpf;
-
-        // Método para cadastrar cliente
-        @FXML
-        public void cadastrarCliente(ActionEvent event) {
-            String nome = txtNome.getText().trim();
-            String telefone = txtTelefone.getText().trim();
-            String cpf = txtCpf.getText().trim();
-
-            if (nome.isEmpty() || telefone.isEmpty() || cpf.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Campo vazio");
-                alert.setHeaderText("Por favor, preencha todos os campos.");
-                alert.showAndWait();
-                return;
-            }
-
-            String sql = "INSERT INTO clientes (nome, telefone, cpf) VALUES (?, ?, ?)";
-
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
-                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-                pstmt.setString(1, nome);
-                pstmt.setString(2, telefone);
-                pstmt.setString(3, cpf);
-                pstmt.executeUpdate();
-
-                // Limpa os campos após cadastrar
-                txtNome.clear();
-                txtTelefone.clear();
-                txtCpf.clear();
-
-                // Atualiza a tabela
-                loadClientesFromDatabase();
-
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Cliente Cadastrado");
-                alert.setHeaderText("Sucesso");
-                alert.setContentText("Cliente cadastrado com sucesso.");
-                alert.showAndWait();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro ao cadastrar cliente");
-                alert.setHeaderText("Erro de Conexão");
-                alert.setContentText("Erro: " + e.getMessage());
-                alert.showAndWait();
-            }
-        }
-
-        // Método para editar cliente
-        @FXML
-        public void editarCliente(ActionEvent event) {
-            Cliente cliente = tableViewClientes.getSelectionModel().getSelectedItem();
-            if (cliente == null) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Seleção inválida");
-                alert.setHeaderText("Nenhum cliente selecionado.");
-                alert.showAndWait();
-                return;
-            }
-
-            // Coleta dados do cliente selecionado
-            String nome = txtNome.getText().trim();
-            String telefone = txtTelefone.getText().trim();
-            String cpf = txtCpf.getText().trim();
-
-            if (nome.isEmpty() || telefone.isEmpty() || cpf.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Campo vazio");
-                alert.setHeaderText("Por favor, preencha todos os campos.");
-                alert.showAndWait();
-                return;
-            }
-
-            String sql = "UPDATE clientes SET nome = ?, telefone = ?, cpf = ? WHERE id = ?";
-
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
-                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-                pstmt.setString(1, nome);
-                pstmt.setString(2, telefone);
-                pstmt.setString(3, cpf);
-                pstmt.setInt(4, cliente.getId()); // ID do cliente selecionado
-
-                pstmt.executeUpdate();
-
-                // Atualiza a tabela
-                loadClientesFromDatabase();
-
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Cliente Editado");
-                alert.setHeaderText("Sucesso");
-                alert.setContentText("Cliente editado com sucesso.");
-                alert.showAndWait();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro ao editar cliente");
-                alert.setHeaderText("Erro de Conexão");
-                alert.setContentText("Erro: " + e.getMessage());
-                alert.showAndWait();
-            }
-        }
-
-        // Método para remover cliente
-        @FXML
-        public void removerCliente(ActionEvent event) {
-            Cliente cliente = tableViewClientes.getSelectionModel().getSelectedItem();
-            if (cliente == null) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Seleção inválida");
-                alert.setHeaderText("Nenhum cliente selecionado.");
-                alert.showAndWait();
-                return;
-            }
-
-            String sql = "DELETE FROM clientes WHERE id = ?";
-
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
-                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-                pstmt.setInt(1, cliente.getId()); // ID do cliente selecionado
-                pstmt.executeUpdate();
-
-                // Atualiza a tabela
-                loadClientesFromDatabase();
-
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Cliente Removido");
-                alert.setHeaderText("Sucesso");
-                alert.setContentText("Cliente removido com sucesso.");
-                alert.showAndWait();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro ao remover cliente");
-                alert.setHeaderText("Erro de Conexão");
-                alert.setContentText("Erro: " + e.getMessage());
-                alert.showAndWait();
-            }
-        }
     @FXML
     public void initialize() {
         // Configuração das colunas da tabela
@@ -212,17 +71,16 @@ public class clienteController {
 
         // Carrega os clientes do banco de dados ao inicializar
         loadClientesFromDatabase();
-
     }
 
-    // Carrega os clientes do banco de dados
+    // Método para carregar os clientes do banco de dados
     @FXML
     private void loadClientesFromDatabase() {
         clienteList.clear(); // Limpa a lista antes de adicionar novos clientes
 
         String sql = "SELECT * FROM clientes";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
 
@@ -250,23 +108,21 @@ public class clienteController {
     }
 
     @FXML
-    public void voltar(ActionEvent event) {
-        carregarTela(event, "/com/farmalabfx/farmalabfx/views/cliente.fxml", "Erro ao voltar");
+    public void clientePage(ActionEvent event) {
+        carregarTela(event, "com/farmalabfx/farmalabfx/CadastroUsuario.fxml", "Erro ao carregar a página");
     }
 
     @FXML
-    public void clientePage(ActionEvent event) {
-        carregarTela(event, "/com/farmalabfx/farmalabfx/CadastroUsuario.fxml", "Erro ao carregar a página");
-    }
-
-    public void fornecedorPage(ActionEvent event) {
-        carregarTela(event, "/com/farmalabfx/farmalabfx/fornecedor.fxml", "Erro ao carregar a página");
+    public void medicamentoPage(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/medicamento.fxml", "Erro ao carregar a página");
     }
 
     @FXML
     public void sairDoSistema(ActionEvent event) {
-        Platform.exit();
+        Stage stage = (Stage) btnsairDoSistema.getScene().getWindow();
+        stage.close(); // Fecha a aplicação
     }
+
 
     @FXML
     public void TelacadastrarCliente(ActionEvent event) {
@@ -288,43 +144,88 @@ public class clienteController {
             alert.showAndWait();
         }
     }
-    @FXML
-    public void abrirTelaEditarCliente(ActionEvent event) {
-        Cliente clienteSelecionado = tableViewClientes.getSelectionModel().getSelectedItem();
 
-        if (clienteSelecionado == null) {
+    // Método para remover cliente
+    @FXML
+    public void removerCliente(ActionEvent event) {
+        Cliente cliente = tableViewClientes.getSelectionModel().getSelectedItem();
+        if (cliente == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Seleção inválida");
             alert.setHeaderText("Nenhum cliente selecionado.");
+            alert.setContentText("Por favor, selecione um cliente para remover.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Confirmação antes de remover
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Confirmação de Remoção");
+        confirmAlert.setHeaderText("Você realmente deseja remover o cliente: " + cliente.getNome() + "?");
+        confirmAlert.setContentText("Essa ação não pode ser desfeita.");
+
+        confirmAlert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                // Remover o cliente do banco de dados
+                String sql = "DELETE FROM clientes WHERE id = ?";
+                try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+                     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+                    pstmt.setInt(1, cliente.getId());
+                    pstmt.executeUpdate();
+
+                    // Remover o cliente da lista e atualizar a TableView
+                    clienteList.remove(cliente);
+                    tableViewClientes.setItems(clienteList);
+
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Cliente Removido");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("Cliente removido com sucesso.");
+                    successAlert.showAndWait();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erro ao remover cliente");
+                    alert.setHeaderText("Erro de Conexão");
+                    alert.setContentText("Erro: " + e.getMessage());
+                    alert.showAndWait();
+                }
+            }
+        });
+    }
+
+
+    @FXML
+    public void abrirTelaEditarCliente() {
+        Cliente clienteSelecionado = tableViewClientes.getSelectionModel().getSelectedItem(); // Pegando o cliente selecionado
+        if (clienteSelecionado == null) {
+            // Mostrar um alerta caso nenhum cliente tenha sido selecionado
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Nenhum cliente selecionado");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um cliente para editar.");
             alert.showAndWait();
             return;
         }
 
         try {
-            // Carrega o FXML da tela de edição
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/com/farmalabfx/farmalabfx/editarCliente.fxml"));
+            // Carregar a tela de cadastro, que será reutilizada para edição
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/farmalabfx/farmalabfx/CadastroCliente.fxml"));
             Parent root = loader.load();
 
-            // Obtém o controller da tela de edição
-            EditarClienteController editarController = loader.getController();
+            // Obter o controller da tela de cadastro para passar os dados do cliente
+            CadastroClienteController controller = loader.getController();
+            controller.inicializarCamposComCliente(clienteSelecionado); // Método para preencher os campos com o cliente selecionado
 
-            // Passa os dados do cliente selecionado para a tela de edição
-            editarController.setClienteDados(clienteSelecionado);
-
-            // Abre a nova janela
-            Stage stage = new Stage();
-            stage.setTitle("Editar Cliente");
-            stage.setScene(new Scene(root));
+            // Substituir a tela atual
+            Stage stage = (Stage) tableViewClientes.getScene().getWindow(); // Obtém a janela atual
+            stage.setScene(new Scene(root)); // Substitui a cena pela nova
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
-            alert.setHeaderText("Erro ao carregar a tela de edição.");
-            alert.setContentText("Erro: " + e.getMessage());
-            alert.showAndWait();
         }
     }
-
 }
