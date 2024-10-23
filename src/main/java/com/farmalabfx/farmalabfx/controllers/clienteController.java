@@ -47,8 +47,7 @@ public class clienteController {
     private TableColumn<Cliente, String> colTelefone;
     @FXML
     private TableColumn<Cliente, String> colCpf;
-    @FXML
-    private TableColumn<Cliente, Void> colunaAcoes;
+
 
     private ObservableList<Cliente> clienteList = FXCollections.observableArrayList();
 
@@ -286,42 +285,38 @@ public class clienteController {
         }
     }
     @FXML
-    public void abrirTelaEditarCliente(ActionEvent event) {
-        Cliente clienteSelecionado = tableViewClientes.getSelectionModel().getSelectedItem();
-
+    public void abrirTelaEditarCliente() {
+        Cliente clienteSelecionado = tableViewClientes.getSelectionModel().getSelectedItem(); // Pegando o cliente selecionado
         if (clienteSelecionado == null) {
+            // Mostrar um alerta caso nenhum cliente tenha sido selecionado
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Seleção inválida");
-            alert.setHeaderText("Nenhum cliente selecionado.");
+            alert.setTitle("Nenhum cliente selecionado");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um cliente para editar.");
             alert.showAndWait();
             return;
         }
 
         try {
-            // Carrega o FXML da tela de edição
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/com/farmalabfx/farmalabfx/editarCliente.fxml"));
+            // Carregar a tela de cadastro, que será reutilizada para edição
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/farmalabfx/farmalabfx/CadastroCliente.fxml"));
             Parent root = loader.load();
 
-            // Obtém o controller da tela de edição
-            EditarClienteController editarController = loader.getController();
+            // Obter o controller da tela de cadastro para passar os dados do cliente
+            CadastroClienteController controller = loader.getController();
+            controller.inicializarCamposComCliente(clienteSelecionado); // Método para preencher os campos com o cliente selecionado
 
-            // Passa os dados do cliente selecionado para a tela de edição
-            editarController.setClienteDados(clienteSelecionado);
-
-            // Abre a nova janela
+            // Abrir a tela de edição
             Stage stage = new Stage();
-            stage.setTitle("Editar Cliente");
             stage.setScene(new Scene(root));
+            stage.setTitle("Editar Cliente");
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
-            alert.setHeaderText("Erro ao carregar a tela de edição.");
-            alert.setContentText("Erro: " + e.getMessage());
-            alert.showAndWait();
         }
     }
 
+
 }
+
