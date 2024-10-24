@@ -173,7 +173,7 @@ public class FornecedorController {
             if (response == ButtonType.OK) {
                 // Remover o fornecedor do banco de dados
                 String sql = "DELETE FROM fornecedores WHERE id = ?";
-                try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+                try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
                      PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
                     pstmt.setInt(1, fornecedor.getId());

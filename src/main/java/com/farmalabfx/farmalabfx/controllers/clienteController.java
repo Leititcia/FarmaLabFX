@@ -80,7 +80,7 @@ public class clienteController {
 
         String sql = "SELECT * FROM clientes";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate ");
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
 
@@ -177,7 +177,7 @@ public class clienteController {
             if (response == ButtonType.OK) {
                 // Remover o cliente do banco de dados
                 String sql = "DELETE FROM clientes WHERE id = ?";
-                try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
+                try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "abacate");
                      PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
                     pstmt.setInt(1, cliente.getId());
