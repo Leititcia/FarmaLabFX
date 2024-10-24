@@ -1,5 +1,8 @@
 # FarmaLabFX
 
+![telaInicial](https://github.com/user-attachments/assets/f266189c-d4a5-4902-b975-9803baa550f6)
+
+
 FarmaLab é um sistema de gerenciamento de clientes desenvolvido em Java utilizando o framework JavaFX. O objetivo do projeto é fornecer uma interface gráfica para gerenciar informações de clientes, medicamentos, fornecedores e vendas de medicamentos, com foco em simplicidade e usabilidade.
 
 ---
