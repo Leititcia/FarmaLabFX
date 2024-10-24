@@ -16,7 +16,7 @@
             <children>
                 <Button fx:id="btnLogin" layoutX="200.0" layoutY="420.0" mnemonicParsing="false" onAction="#logarUsuario" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #79787A;" text="Entrar" textFill="WHITE">
                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                     <font>
                         <Font size="14.0" />
@@ -27,7 +27,7 @@
                         <Font size="14.0" />
                     </font>
                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
                 <Button fx:id="btnSair" layoutX="45.0" layoutY="420.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #000000;" text="Sair" textFill="WHITE">
@@ -35,7 +35,7 @@
                         <Font size="14.0" />
                     </font>
                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
                 <TextField fx:id="senhaCadastro" layoutX="52.0" layoutY="255.0" prefHeight="30.0" prefWidth="296.0" style="-fx-prompt-text-fill: #A9A9A9;">

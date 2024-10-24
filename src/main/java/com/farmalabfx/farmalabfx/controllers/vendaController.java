@@ -1,18 +1,70 @@
 package com.farmalabfx.farmalabfx.controllers;
 
+import com.farmalabfx.farmalabfx.models.Fornecedor;
+import com.farmalabfx.farmalabfx.models.Medicamento;
+import com.farmalabfx.farmalabfx.models.Venda;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class vendaController {
+
+    @FXML
+    private Button btnSair;
+
+    @FXML
+    private TableView<Venda> tableViewVendas;
+
+    @FXML
+    private TableColumn<Venda, String> colCliente;
+
+    @FXML
+    private TableColumn<Venda, String> colMedicamento;
+
+    @FXML
+    private TableColumn<Venda, Integer> colQuantidade;//colFornecedor
+
+    @FXML
+    private TableColumn<Venda, String> colData;
+
+    private ObservableList<Venda> vendaList = FXCollections.observableArrayList();
+
+    @FXML
+    public void initialize() {
+        // Configuração das colunas da tabela
+        //colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colCliente.setCellValueFactory(new PropertyValueFactory<>("cliente"));
+        colMedicamento.setCellValueFactory(new PropertyValueFactory<>("medicamento"));
+        colQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        colData.setCellValueFactory(new PropertyValueFactory<>("data"));
+
+        // Carrega os clientes do banco de dados ao inicializar
+        loadVendaFromDatabase();
+    }
+
+    @FXML
+    private void loadVendaFromDatabase() {
+        vendaList.clear(); // Limpa a lista antes de adicionar novos clientes
+
+        vendaList = FXCollections.observableArrayList(Venda.all());
+
+        tableViewVendas.setItems(vendaList);
+    }
 
     @FXML
     public void clientePage(ActionEvent event) {
@@ -39,6 +91,10 @@ public class vendaController {
         Platform.exit();
     }
 
+    @FXML
+    public void TelaRealizarVenda(ActionEvent event) {
+        carregarTela(event, "/com/farmalabfx/farmalabfx/realizarVenda.fxml", "Erro ao carregar a página de cadastro");
+    }
 
     // Método auxiliar para carregar telas
     private void carregarTela(ActionEvent event, String resourcePath, String errorMessage) {
@@ -55,5 +111,6 @@ public class vendaController {
             alert.showAndWait();
         }
     }
+
 
 }

@@ -1,5 +1,12 @@
 package com.farmalabfx.farmalabfx.models;
 
+import com.farmalabfx.farmalabfx.db.DBConnection;
+import javafx.scene.control.Alert;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -82,4 +89,37 @@ public class Venda {
         this.precoTotal = precoTotal;
     }
 
+    public static ArrayList<Venda> all(){
+        ArrayList<Venda> vendaList = new ArrayList<>();
+
+        String sql = "SELECT * FROM vendas";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int id_cliente = rs.getInt("id_cliente");
+                int id_medicamento = rs.getInt("id_medicamento");
+                int quantidade = rs.getInt("quantidade");
+                Date data = rs.getDate("data");
+
+                Cliente cliente = Cliente.get(id_cliente);
+                Medicamento medicamento = Medicamento.get(id_medicamento);
+
+                // Adiciona o cliente à lista
+                vendaList.add(new Venda(id, cliente, medicamento, quantidade, data));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro ao carregar clientes");
+            alert.setHeaderText("Erro de Conexão");
+            alert.setContentText("Erro: " + e.getMessage());
+            alert.showAndWait();
+        }
+
+        return vendaList;
+    }
 }

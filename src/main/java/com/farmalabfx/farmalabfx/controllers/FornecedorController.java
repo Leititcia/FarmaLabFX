@@ -75,33 +75,10 @@ public class FornecedorController {
     private void loadFornecedoresFromDatabase() {
         fornecedorList.clear(); // Limpa a lista antes de adicionar novos fornecedores
 
-        String sql = "SELECT * FROM fornecedores";
+        fornecedorList = FXCollections.observableArrayList(Fornecedor.all());
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmalab", "root", "5002");
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String nome = rs.getString("nome");
-                String telefone = rs.getString("telefone");
-                String cnpj = rs.getString("cnpj");
-
-                // Adiciona o fornecedor à lista
-                fornecedorList.add(new Fornecedor(id, nome, telefone, cnpj));
-            }
-
-            // Adiciona a lista de fornecedores na TableView
-            tableViewFornecedores.setItems(fornecedorList);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro ao carregar fornecedores");
-            alert.setHeaderText("Erro de Conexão");
-            alert.setContentText("Erro: " + e.getMessage());
-            alert.showAndWait();
-        }
+        // Adiciona a lista de fornecedores na TableView
+        tableViewFornecedores.setItems(fornecedorList);
     }
 
     @FXML

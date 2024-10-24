@@ -1,8 +1,9 @@
 package com.farmalabfx.farmalabfx.controllers;
 
 import com.farmalabfx.farmalabfx.db.DBConnection;
+import com.farmalabfx.farmalabfx.models.Cliente;
 import com.farmalabfx.farmalabfx.models.Fornecedor;
-import javafx.application.Platform;
+import com.farmalabfx.farmalabfx.models.Medicamento;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,44 +12,42 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class cadastroMedicamentoController {
+public class realizarVendaController {
     @FXML
-    private TextField txtNome;
+    private TextField txtQuantidade;
     @FXML
-    private TextField txtPreco;
+    private ComboBox<Cliente> cbCliente;
     @FXML
-    private TextField txtQuantidade; // Alterado para txtCnpj
-    @FXML
-    private ComboBox<Fornecedor> cbFornecedor;
+    private ComboBox<Medicamento> cbMedicamento;
 
     @FXML
-    private Button btnMedicamento; // Alterado para btnFornecedor
+    private Button btnVenda; // Alterado para btnFornecedor
     @FXML
     private Button btnCadastrar;
 
     private Connection conn;
     private int idFornecedorAtual; // ID do fornecedor que está sendo editado
 
-    private ObservableList<Fornecedor> fornecedorList = FXCollections.observableArrayList();
+    private ObservableList<Cliente> clienteList = FXCollections.observableArrayList();
+    private ObservableList<Medicamento> medicamentoList = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
         try {
             conn = DBConnection.getConnection(); // Conexão com o banco de dados
-            fornecedorList = FXCollections.observableArrayList(Fornecedor.all());
-            cbFornecedor.setItems(fornecedorList);
+            clienteList = FXCollections.observableArrayList(Cliente.all());
+            cbCliente.setItems(clienteList);
+
+            medicamentoList = FXCollections.observableArrayList(Medicamento.all());
+            cbMedicamento.setItems(medicamentoList);
         } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Erro de Conexão", "Não foi possível conectar ao banco de dados: " + e.getMessage());
         }
@@ -75,27 +74,26 @@ public class cadastroMedicamentoController {
     }
 
     @FXML
-    public void CadastrarMedicamento(ActionEvent event) { // Alterado para CadastrarFornecedor
-        String nome = txtNome.getText().trim();
-        float preco = Float.parseFloat(txtPreco.getText().trim());
+    public void CadastrarVenda(ActionEvent event) { // Alterado para CadastrarFornecedor
         int quantidade = Integer.parseInt(txtQuantidade.getText().trim()); // Alterado para cnpj
-        Fornecedor fornecedor = cbFornecedor.getSelectionModel().getSelectedItem();
+        Cliente cliente = cbCliente.getSelectionModel().getSelectedItem();
+        Medicamento medicamento = cbMedicamento.getSelectionModel().getSelectedItem();
 
         // Validação básica
-        if (nome.isEmpty() || preco == 0 || quantidade == 0 || fornecedor == null) { // Alterado para cnpj
+        if (quantidade == 0 || cliente == null) { // Alterado para cnpj
             showAlert(Alert.AlertType.WARNING, "Atenção", "Preencha todos os campos!");
             return;
         }
 
-        String sql = "INSERT INTO medicamentos (nome, preco, quantidade, id_fornecedor) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO vendas (id_cliente, id_medicamento, quantidade, preco_total, data) VALUES (?, ?, ?, ?, now())";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, nome);
-            pstmt.setFloat(2, preco);
+            pstmt.setInt(1, cliente.getId());
+            pstmt.setInt(2, medicamento.getId());
             pstmt.setInt(3, quantidade); // Alterado para cnpj
-            pstmt.setInt(4, fornecedor.getId()); // Alterado para cnpj
+            pstmt.setFloat(4, (float) (medicamento.getPreco()*quantidade));
             pstmt.executeUpdate();
-            showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Medicamento cadastrado com sucesso!"); // Alterado para fornecedor
+            showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Venda cadastrado com sucesso!"); // Alterado para fornecedor
 
             // Limpar os campos após o cadastro
             limparCampos();
@@ -110,14 +108,14 @@ public class cadastroMedicamentoController {
     // Método para carregar a tela de fornecedores
     @FXML
     public void fornecedorPage(ActionEvent event) {
-        carregaTela("/com/farmalabfx/farmalabfx/fornecedor.fxml");
+        carregaTela("/com/farmalabfx/farmalabfx/vendas.fxml");
     }
 
     // Método genérico para carregar telas
     private void carregaTela(String fxmlPath) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-            Stage stage = (Stage) btnCadastrar.getScene().getWindow(); // Usa qualquer botão da tela para obter a janela
+            Stage stage = (Stage) btnVenda.getScene().getWindow(); // Usa qualquer botão da tela para obter a janela
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
@@ -141,7 +139,7 @@ public class cadastroMedicamentoController {
     // Método para voltar à tela anterior
     @FXML
     public void voltar(ActionEvent event) {
-        carregaTela("/com/farmalabfx/farmalabfx/medicamento.fxml"); // Retorna para a tela de fornecedores
+        carregaTela("/com/farmalabfx/farmalabfx/vendas.fxml"); // Retorna para a tela de fornecedores
     }
 
     // Método para mostrar alertas

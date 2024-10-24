@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmalabfx.farmalabfx.controllers.medicamentoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmalabfx.farmalabfx.controllers.vendaController">
     <children>
         <Pane layoutX="-2.0" layoutY="-3.0" prefHeight="506.0" prefWidth="258.0" style="-fx-background-color: #7E69A3;">
             <children>
@@ -29,26 +30,41 @@
                     <font>
                         <Font size="14.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
                 <Button fx:id="btnFornecedor" layoutX="57.0" layoutY="215.0" mnemonicParsing="false" onAction="#fornecedorPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Fornecedor" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
-                <Button layoutX="57.0" layoutY="265.0" mnemonicParsing="false" onAction="#medicamentosPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
+                <Button fx:id="btnMedicamento" layoutX="57.0" layoutY="265.0" mnemonicParsing="false" onAction="#medicamentosPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #412570;" text="Medicamentos" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
-                <Button layoutX="57.0" layoutY="315.0" mnemonicParsing="false" onAction="#vendasPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #000000;" text="Vendas" textFill="WHITE">
+                <Button fx:id="btnVenda" layoutX="57.0" layoutY="315.0" mnemonicParsing="false" onAction="#vendasPage" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #000000;" text="Vendas" textFill="WHITE">
                     <font>
                         <Font size="14.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
-                <Button layoutX="57.0" layoutY="428.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #ffffff;" text="Sair">
+                <Button fx:id="btnSair" layoutX="57.0" layoutY="428.0" mnemonicParsing="false" onAction="#sairDoSistema" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: #ffffff;" text="Sair">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
             </children>
         </Pane>
@@ -61,16 +77,18 @@
                 </Label>
             </children>
         </Pane>
-        <TableView fx:id="tableViewClientes" layoutX="268.0" layoutY="115.0" prefHeight="242.0" prefWidth="523.0">
+        <TableView fx:id="tableViewVendas" layoutX="268.0" layoutY="115.0" prefHeight="242.0" prefWidth="523.0">
             <columns>
-                <TableColumn fx:id="colId" prefWidth="154.0" text="CLIENTE" />
-                <TableColumn fx:id="colNome" prefWidth="115.0" text="MEDICAMENTO" />
-                <TableColumn fx:id="colTelefone" prefWidth="125.0" text="QUANTIDADE" />
-                <TableColumn fx:id="colCpf" prefWidth="128.0" text="DATA" />
+                <TableColumn fx:id="colCliente" prefWidth="154.0" text="CLIENTE" />
+                <TableColumn fx:id="colMedicamento" prefWidth="115.0" text="MEDICAMENTO" />
+                <TableColumn fx:id="colQuantidade" prefWidth="125.0" text="QUANTIDADE" />
+                <TableColumn fx:id="colData" prefWidth="128.0" text="DATA" />
             </columns>
         </TableView>
 
-        <Button layoutX="583.0" layoutY="366.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: #7E69A3;" text="Realizar Venda" textFill="WHITE" />
-        <Button fx:id="excluirMedicamento" layoutX="706.0" layoutY="366.0" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #7E69A3;" text="Excluir" textFill="WHITE" />
+        <Button fx:id="btnRealizaVenda" layoutX="677.0" layoutY="368.0" onAction="#TelaRealizarVenda" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: #7E69A3;" text="Realizar Venda" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
     </children>
 </Pane>
